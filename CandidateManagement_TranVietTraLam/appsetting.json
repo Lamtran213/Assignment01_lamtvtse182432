@@ -1,0 +1,6 @@
+﻿{
+  "ConnectionStrings": {
+    "DBConnect": "Server=LamTran\\TRANLAM;Database=CandidateManagement;Uid=sa;Pwd=12345;TrustServerCertificate=True;"
+  },
+  "AllowHosts":  "*"
+}

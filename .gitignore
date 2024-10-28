@@ -1,0 +1,15 @@
+# Bỏ qua thư mục .vs
+.vs/
+
+# Bỏ qua file build
+bin/
+obj/
+
+# Bỏ qua file tạm thời của Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Bỏ qua file log
+*.log
