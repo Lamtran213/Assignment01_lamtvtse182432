@@ -125,7 +125,6 @@ namespace CandidateManagement_TranVietTraLam
                     }
 
                     candidateProfile.ProfileShortDescription = txtDescription.Text;
-                    profileService.UpdateCandidateProfile(candidateProfile);
                     if (profileService.UpdateCandidateProfile(candidateProfile) == true)
                     {
                         MessageBox.Show("Update candidate information successfully!");
@@ -171,6 +170,10 @@ namespace CandidateManagement_TranVietTraLam
         private void dtgCandidateProfile_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid dataGrid = sender as DataGrid;
+            if (dataGrid == null || dataGrid.SelectedIndex < 0)
+            {
+                return;
+            }
             DataGridRow row =
                 (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(dataGrid.SelectedIndex);
             DataGridCell RowColumn =

@@ -39,12 +39,12 @@ namespace Candidate_DAOs
 
         public bool UpdateJobPosting(JobPosting jobPosting)
         {
-            var check = GetJobPostingByID(jobPosting.PostingId);
-            if (check != null)
+            var jobPostingToUpdate = GetJobPostingByID(jobPosting.PostingId);
+            if (jobPostingToUpdate != null)
             {
-                check.JobPostingTitle = check.JobPostingTitle.Trim();
-                check.Description = check.Description;
-                check.PostedDate = check.PostedDate;
+                jobPostingToUpdate.JobPostingTitle = jobPosting.JobPostingTitle.Trim();
+                jobPostingToUpdate.Description = jobPosting.Description;
+                jobPostingToUpdate.PostedDate = jobPosting.PostedDate;
 
                 return dbContext.SaveChanges() > 0;
             }
@@ -64,7 +64,7 @@ namespace Candidate_DAOs
         public bool DeleteJobPosting(string id)
         {
             var jobPostingDeleted = GetJobPostingByID(id);
-            if(jobPostingDeleted == null)
+            if(jobPostingDeleted != null)
             {
                 dbContext.Set<JobPosting>().Remove(jobPostingDeleted);
                 return dbContext.SaveChanges() > 0;
