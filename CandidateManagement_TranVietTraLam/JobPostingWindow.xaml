@@ -5,10 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CandidateManagement_TranVietTraLam"
         mc:Ignorable="d"
-        Title="JobPostingWindow" Height="450" Width="800">
+        Title="JobPostingWindow" Height="650" Width="800" ResizeMode="NoResize">
     <Grid>
-        <Label Content="JOB POSTING SCREEN" HorizontalAlignment="Center" Height="54" Margin="0,31,0,0" VerticalAlignment="Top" Width="254" HorizontalContentAlignment="Center" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Height="30" Margin="66,85,0,0" TextWrapping="Wrap" Text="Post ID" VerticalAlignment="Top" Width="68"/>
+        <Label Content="JOB POSTING MANAGEMENT" HorizontalAlignment="Center" Height="54" Margin="0,31,0,0" VerticalAlignment="Top" Width="254" HorizontalContentAlignment="Center" FontSize="16" FontFamily="Cascadia Code"/>
+        <TextBlock HorizontalAlignment="Left" Height="30" Margin="114,102,0,0" TextWrapping="Wrap" Text="Post ID" VerticalAlignment="Top" Width="68" FontFamily="Cascadia Code"/>
+        <TextBox x:Name="txtPostID" HorizontalAlignment="Left" Margin="223,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontFamily="Cascadia Code"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.717,0.675" FontFamily="Cascadia Code"><Run Text="Job Posting Title"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="txtJobPostingTitle" HorizontalAlignment="Left" Margin="223,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" FontFamily="Cascadia Code"/>
+        <TextBlock HorizontalAlignment="Left" Margin="434,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.316" Width="93" FontFamily="Cascadia Code"><Run Text="Description"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="txtDescription" HorizontalAlignment="Left" Margin="554,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" FontFamily="Cascadia Code"/>
+        <TextBlock HorizontalAlignment="Left" Margin="434,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Cascadia Code"><Run Text="Posted Date"/><LineBreak/><Run/></TextBlock>
+        <DatePicker x:Name="dpPostedDate" HorizontalAlignment="Left" Margin="554,142,0,0" VerticalAlignment="Top" Width="170" FontFamily="Cascadia Code"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="95,508,0,0" VerticalAlignment="Top" Width="68" Height="32" FontFamily="Cascadia Code"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="249,508,0,0" VerticalAlignment="Top" Width="68" Height="32" RenderTransformOrigin="0.588,2.267" FontFamily="Cascadia Code"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="554,508,0,0" VerticalAlignment="Top" Width="68" Height="32" FontFamily="Cascadia Code"/>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="400,508,0,0" VerticalAlignment="Top" Width="68" Height="32" Click="btnClose_Click" FontFamily="Cascadia Code"/>
+        <DataGrid x:Name="dtgJobPosting" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,218,0,190" FontFamily="Cascadia Code"/>
+        <Button Background="SkyBlue" x:Name="btnCandidate" Content="Candidate Profile Management" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" Click="btnCandidate_Click" FontFamily="Cascadia Code"/>
+        <Button Background="SkyBlue" x:Name="btnJobPosting" Content="Job Posting" HorizontalAlignment="Left" Margin="19,37,0,0" VerticalAlignment="Top" Click="btnJobPosting_Click" FontFamily="Cascadia Code" Width="91"/>
 
     </Grid>
 </Window>

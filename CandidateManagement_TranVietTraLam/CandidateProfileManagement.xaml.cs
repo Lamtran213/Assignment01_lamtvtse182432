@@ -184,5 +184,17 @@ namespace CandidateManagement_TranVietTraLam
             cmbPostId.SelectedValue = candidateProfile.PostingId;
             txtDescription.Text = candidateProfile.ProfileShortDescription;
         }
+
+        private void btnCandidate_Click(object sender, RoutedEventArgs e)
+        {
+            this.Activate();
+        }
+
+        private void btnJobPosting_Click(object sender, RoutedEventArgs e)
+        {
+            JobPostingWindow jobPostingWindow = new JobPostingWindow(jobPostingService);
+            this.Close();
+            jobPostingWindow.ShowDialog();
+        }
     }
 }
