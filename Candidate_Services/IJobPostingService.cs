@@ -11,5 +11,8 @@ namespace Candidate_Services
     {
         public List<JobPosting> GetJobPostings();
         public JobPosting GetJobPostingByID(string id);
+        public bool UpdateJobPosting(JobPosting jobPosting);
+        public bool CreateJobPosting(JobPosting jobPosting);
+        public bool DeleteJobPosting(string id);
     }
 }

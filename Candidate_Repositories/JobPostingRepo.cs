@@ -12,5 +12,11 @@ namespace Candidate_Repositories
     {
         public List<JobPosting> GetJobPostings() => JobPostingDAO.Instance.GetJobPostings();
         public JobPosting GetJobPostingByID(string id) => JobPostingDAO.Instance.GetJobPostingByID(id);
+
+        public bool UpdateJobPosting(JobPosting jobPosting) => JobPostingDAO.Instance.UpdateJobPosting(jobPosting);
+
+        public bool CreateJobPosting(JobPosting jobPosting) => JobPostingDAO.Instance.CreateJobPosting(jobPosting);
+
+        public bool DeleteJobPosting(string id) => JobPostingDAO.Instance.DeleteJobPosting(id);
     }
 }

@@ -26,5 +26,20 @@ namespace Candidate_Service
         {
             return jobPostingRepo.GetJobPostingByID(id);
         }
+
+        public bool UpdateJobPosting(JobPosting jobPosting)
+        {
+            return jobPostingRepo.UpdateJobPosting(jobPosting);
+        }
+
+        public bool CreateJobPosting(JobPosting jobPosting)
+        {
+            return jobPostingRepo.CreateJobPosting(jobPosting);
+        }
+
+        public bool DeleteJobPosting(string id)
+        {
+            return jobPostingRepo.DeleteJobPosting(id);
+        }
     }
 }

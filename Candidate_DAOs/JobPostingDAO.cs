@@ -10,7 +10,7 @@ namespace Candidate_DAOs
 {
     public class JobPostingDAO
     {
-        private CandidateManagementContext dbContext;
+        private static CandidateManagementContext dbContext;
         private static JobPostingDAO instance;
         public static JobPostingDAO Instance
         {
@@ -27,13 +27,49 @@ namespace Candidate_DAOs
         {
             dbContext = new CandidateManagementContext();
         }
-        public List<JobPosting> GetJobPostings() {
+        public List<JobPosting> GetJobPostings()
+        {
             return dbContext.JobPostings.ToList();
         }
 
-        public JobPosting GetJobPostingByID(string id) {
+        public JobPosting GetJobPostingByID(string id)
+        {
             return dbContext.JobPostings.SingleOrDefault(m => m.PostingId.Equals(id));
         }
 
+        public bool UpdateJobPosting(JobPosting jobPosting)
+        {
+            var check = GetJobPostingByID(jobPosting.PostingId);
+            if (check != null)
+            {
+                check.JobPostingTitle = check.JobPostingTitle.Trim();
+                check.Description = check.Description;
+                check.PostedDate = check.PostedDate;
+
+                return dbContext.SaveChanges() > 0;
+            }
+            return false;
+        }
+
+        public bool CreateJobPosting(JobPosting jobPosting)
+        {
+            if(GetJobPostingByID(jobPosting.PostingId) == null)
+            {
+                dbContext.Set<JobPosting>().Add(jobPosting);
+                return dbContext.SaveChanges() > 0;
+            }
+            return false;
+        }
+
+        public bool DeleteJobPosting(string id)
+        {
+            var jobPostingDeleted = GetJobPostingByID(id);
+            if(jobPostingDeleted == null)
+            {
+                dbContext.Set<JobPosting>().Remove(jobPostingDeleted);
+                return dbContext.SaveChanges() > 0;
+            }
+            return false;
+        }
     }
 }
