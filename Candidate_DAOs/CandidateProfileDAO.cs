@@ -1,7 +1,9 @@
 ﻿using Candidate_BusinessObjects;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.SqlServer.Server;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Candidate_DAOs
 {
@@ -42,12 +44,18 @@ namespace Candidate_DAOs
 
         public bool AddCandidateProfile(CandidateProfile candidateProfile)
         {
+            if (!Regex.IsMatch(candidateProfile.CandidateId, @"^CANDIDATE\d{4}$"))
+            {
+                throw new ArgumentException("CandidateID must have the format 'CANDIDATE' followed by 4 digits.");
+            }
+
             if (GetCandidateProfile(candidateProfile.CandidateId) == null)
             {
                 dbContext.Set<CandidateProfile>().Add(candidateProfile);
                 return dbContext.SaveChanges() > 0;
             }
-            return false; 
+
+            return false;
         }
 
         public bool DeleteCandidateProfile(string candidateProfileId)
@@ -63,6 +71,10 @@ namespace Candidate_DAOs
 
         public bool UpdateCandidateProfile(CandidateProfile candidateProfile)
         {
+            if (!Regex.IsMatch(candidateProfile.CandidateId, @"^CANDIDATE\d{4}$"))
+            {
+                throw new ArgumentException("CandidateID must have the format 'CANDIDATE' followed by 4 digits.");
+            }
             var candidate = GetCandidateProfile(candidateProfile.CandidateId);
             if (candidate != null)
             {

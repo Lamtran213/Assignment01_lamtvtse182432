@@ -90,7 +90,7 @@ namespace CandidateManagement_TranVietTraLam
             catch (Exception ex)
             {
                 {
-                    MessageBox.Show("Cannot add for some reason!");
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace CandidateManagement_TranVietTraLam
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Cannot delete for some reason!");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -144,7 +144,7 @@ namespace CandidateManagement_TranVietTraLam
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Cannot update job posting for some reason!");
+                MessageBox.Show(ex.Message);
             }
         }
     }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Candidate_DAOs
@@ -39,6 +40,10 @@ namespace Candidate_DAOs
 
         public bool UpdateJobPosting(JobPosting jobPosting)
         {
+            if (!Regex.IsMatch(jobPosting.PostingId, @"^P\d{4}$"))
+            {
+                throw new ArgumentException("PostingId must have the format 'P' followed by 4 digits.");
+            }
             var jobPostingToUpdate = GetJobPostingByID(jobPosting.PostingId);
             if (jobPostingToUpdate != null)
             {
@@ -53,12 +58,18 @@ namespace Candidate_DAOs
 
         public bool CreateJobPosting(JobPosting jobPosting)
         {
-            if(GetJobPostingByID(jobPosting.PostingId) == null)
+            if (!Regex.IsMatch(jobPosting.PostingId, @"^P\d{4}$"))
+            {
+                throw new ArgumentException("PostingId must have the format 'P' followed by 4 digits.");
+            }
+
+            if (GetJobPostingByID(jobPosting.PostingId) == null)
             {
                 dbContext.Set<JobPosting>().Add(jobPosting);
                 return dbContext.SaveChanges() > 0;
             }
-            return false;
+
+            return false; // JobPosting đã tồn tại
         }
 
         public bool DeleteJobPosting(string id)
